@@ -24,6 +24,7 @@ import com.zampaaa.model.User;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -70,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
         String mEmailStr,mNameStr;
         @Override
         public void onClick(View v) {
-            if(mEmail.getText().toString().length() >0){
+            if(mEmail.getText().toString().length() >0 && isEmailValid(mEmail.getText().toString())){
                 mEmailStr = mEmail.getText().toString();
                 if(mName.getText().toString().length() > 0){
                     mNameStr = mName.getText().toString();
@@ -103,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                     mName.setError("Name is required");
                 }
             } else {
-                mEmail.setError("Email is required");
+                mEmail.setError("Email is required & Enter a Valid Email");
             }
 
         }
@@ -152,5 +153,9 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(i);
         SharedPreferenceUtils.writeBoolean(LoginActivity.this,"login",true);
         finish();
+    }
+
+    boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }
