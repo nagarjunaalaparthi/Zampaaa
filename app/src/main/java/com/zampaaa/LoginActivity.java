@@ -14,6 +14,7 @@ import com.digits.sdk.android.DigitsAuthButton;
 import com.digits.sdk.android.DigitsAuthConfig;
 import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsSession;
+import com.zampaaa.Utils.SharedPreferenceUtils;
 
 /**
  * Created by Softapt on 28/05/2016.
@@ -34,8 +35,8 @@ public class LoginActivity extends BaseActivity {
     View.OnClickListener verifyClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if(mPhoneNumber.getText().toString().length()>0) {
-                DigitsAuthConfig config = new DigitsAuthConfig.Builder().withAuthCallBack(authCallback).withPhoneNumber("+91" +mPhoneNumber.getText().toString()).build();
+            if (mPhoneNumber.getText().toString().length() > 0) {
+                DigitsAuthConfig config = new DigitsAuthConfig.Builder().withAuthCallBack(authCallback).withPhoneNumber("+91" + mPhoneNumber.getText().toString()).build();
 
                 Digits.getSessionManager().clearActiveSession();
                 Digits.authenticate(config);
@@ -47,8 +48,9 @@ public class LoginActivity extends BaseActivity {
         @Override
         public void success(DigitsSession session, String phoneNumber) {
             // TODO: associate the session userID with your user model
-            Intent restaurentIntent = new Intent(LoginActivity.this,RestaurentActivity.class);
+            Intent restaurentIntent = new Intent(LoginActivity.this, RestaurentActivity.class);
             startActivity(restaurentIntent);
+            SharedPreferenceUtils.writeBoolean(LoginActivity.this,"login",true);
             finish();
         }
 

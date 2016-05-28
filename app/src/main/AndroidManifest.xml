@@ -12,6 +12,7 @@
         <activity android:name=".RestaurentActivity">
 
         </activity>
+        <activity android:name=".Items.AddItemsToMenuActivity"></activity>
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>

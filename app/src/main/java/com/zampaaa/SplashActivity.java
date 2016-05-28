@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.zampaaa.Utils.SharedPreferenceUtils;
+
 /**
  * Created by Softapt on 28/05/2016.
  */
@@ -17,10 +19,15 @@ public class SplashActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent homeIntent = new Intent(SplashActivity.this,LoginActivity.class);
-                startActivity(homeIntent);
+                if(SharedPreferenceUtils.readBoolean(SplashActivity.this,"login",false)){
+                    Intent homeIntent = new Intent(SplashActivity.this, RestaurentActivity.class);
+                    startActivity(homeIntent);
+                }else{
+                    Intent homeIntent = new Intent(SplashActivity.this, LoginActivity.class);
+                    startActivity(homeIntent);
+                }
                 finish();
             }
-        },1000);
+        }, 2000);
     }
 }
