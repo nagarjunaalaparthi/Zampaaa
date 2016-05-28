@@ -14,6 +14,7 @@
         </activity>
         <activity android:name=".Items.AddItemsToMenuActivity"></activity>
         <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".orders.OrdersActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.zampaaa.Items.AddItemsToMenuActivity;
 import com.zampaaa.Items.ItemsAdapter;
+import com.zampaaa.orders.OrdersActivity;
 
 
 public class RestaurentActivity extends AppCompatActivity implements View.OnClickListener{
@@ -45,8 +46,8 @@ public class RestaurentActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        Intent addIntent = new Intent(RestaurentActivity.this, AddItemsToMenuActivity.class);
-        startActivityForResult(addIntent,100);
+        Intent addIntent = new Intent(RestaurentActivity.this, OrdersActivity.class);
+        startActivityForResult(addIntent, 100);
     }
 }
 
