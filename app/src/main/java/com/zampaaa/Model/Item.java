@@ -11,6 +11,7 @@ public class Item implements Serializable {
     String category = "";
     String vegType = "";
     String id = "";
+    String soldQuantity = "";
 
     public String getName() {
         return name;
@@ -50,5 +51,13 @@ public class Item implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getSoldQuantity() {
+        return soldQuantity;
+    }
+
+    public void setSoldQuantity(String soldQuantity) {
+        this.soldQuantity = soldQuantity;
     }
 }

@@ -19,14 +19,14 @@ import com.zampaaa.orders.RequestedOrderFragment;
 /**
  * Created by Softapt on 28/05/2016.
  */
-public class ReportsActivity extends BaseActivity implements TabLayout.OnTabSelectedListener{
+public class ReportsActivity extends BaseActivity implements TabLayout.OnTabSelectedListener {
     //This is our tablayout
     private TabLayout tabLayout;
 
     //This is our viewPager
     private ViewPager viewPager;
     private TextView selectFrequency;
-    CharSequence[] items = new CharSequence[]{"daily","weekly","monthly","yearly"};
+    CharSequence[] items = new CharSequence[]{"daily", "weekly", "monthly", "yearly"};
     private String selectFrequencyText = "";
 
     @Override
@@ -94,6 +94,7 @@ public class ReportsActivity extends BaseActivity implements TabLayout.OnTabSele
 
         }
     };
+
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
         viewPager.setCurrentItem(tab.getPosition());
@@ -127,10 +128,10 @@ public class ReportsActivity extends BaseActivity implements TabLayout.OnTabSele
             //Returning the current tabs
             switch (position) {
                 case 0:
-                    RequestedOrderFragment tab1 = new RequestedOrderFragment();
+                    UserAnalytics tab1 = new UserAnalytics();
                     return tab1;
                 case 1:
-                    RequestedOrderFragment tab2 = new RequestedOrderFragment();
+                    ProductAnalytics tab2 = new ProductAnalytics();
                     return tab2;
                 default:
                     return null;

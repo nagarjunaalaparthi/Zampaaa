@@ -2,7 +2,6 @@ package com.zampaaa.orders;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,7 +26,7 @@ public class RequestedOrderFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if(view == null) {
-            view = inflater.inflate(R.layout.fragment_requested_orders, container, false);
+            view = inflater.inflate(R.layout.fragment_recyclerview, container, false);
             initViews(view);
         }else{
 

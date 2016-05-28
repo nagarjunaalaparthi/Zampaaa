@@ -78,7 +78,7 @@
         android:layout_gravity="bottom"
         android:layout_margin="16dp"
         android:onClick="onClick"
-        android:src="@drawable/reports" />
+        android:src="@drawable/clipboard_icon_green" />
 
     <TextView
         android:id="@+id/order_count"
