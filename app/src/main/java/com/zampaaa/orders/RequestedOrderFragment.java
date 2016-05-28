@@ -40,7 +40,7 @@ public class RequestedOrderFragment extends BaseFragment {
             layoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-            ItemsAdapter adapter = new ItemsAdapter();
+            ItemsAdapter adapter = new ItemsAdapter(null);
             recyclerView.setAdapter(adapter);
     }
 }

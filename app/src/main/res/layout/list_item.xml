@@ -7,9 +7,10 @@
 
     <ImageView
         android:id="@+id/vegImage"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_centerVertical="true"
+        android:padding="5dp"
         android:src="@drawable/veg" />
 
     <TextView
@@ -20,7 +21,7 @@
         android:layout_marginLeft="15dp"
         android:layout_toRightOf="@+id/vegImage"
         android:text="Chilly Chicken"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
     <TextView
@@ -31,14 +32,25 @@
         android:layout_marginRight="15dp"
         android:layout_toLeftOf="@+id/editImage"
         android:text="210"
-        android:textSize="18sp"
+        android:singleLine="true"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/editImage"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/deleteImage"
+        android:padding="5dp"
+        android:src="@drawable/edit_icon" />
+
+    <ImageView
+        android:id="@+id/deleteImage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/veg" />
+        android:padding="5dp"
+        android:src="@drawable/delete_icon" />
 </RelativeLayout>
