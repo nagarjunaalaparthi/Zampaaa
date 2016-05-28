@@ -1,4 +1,4 @@
-package com.zampaaa;
+package com.consumer;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

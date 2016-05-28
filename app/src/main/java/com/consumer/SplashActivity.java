@@ -1,4 +1,4 @@
-package com.zampaaa;
+package com.consumer;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -13,11 +13,11 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent homeIntent = new Intent(SplashActivity.this,LoginActivity.class);
+                Intent homeIntent = new Intent(SplashActivity.this, RestaurantsActivity.class);
                 startActivity(homeIntent);
                 finish();
             }
-        },4000);
+        }, 4000);
 
     }
 }

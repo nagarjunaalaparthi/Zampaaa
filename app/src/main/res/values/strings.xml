@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Zampaaa</string>
+    <string name="transition_string">image_view_share</string>
 </resources>

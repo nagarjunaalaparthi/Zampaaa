@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zampaaa">
+    package="com.consumer">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -24,6 +24,8 @@
             android:value="af1840f27103d3605d52ba92683bcf5cc21a44fc" />
 
         <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".RestaurantsActivity"></activity>
+        <activity android:name=".RestaurantDetailsActivity"></activity>
     </application>
 
 </manifest>

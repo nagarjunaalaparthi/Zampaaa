@@ -1,4 +1,4 @@
-package com.zampaaa;
+package com.consumer;
 
 import org.junit.Test;
 

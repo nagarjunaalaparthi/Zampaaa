@@ -1,4 +1,4 @@
-package com.zampaaa;
+package com.consumer;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

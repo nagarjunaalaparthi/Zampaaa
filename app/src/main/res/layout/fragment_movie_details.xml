@@ -1,0 +1,69 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/match_match"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <android.support.v4.widget.NestedScrollView style="@style/match_match">
+
+        <RelativeLayout style="@style/match_wrap">
+
+            <LinearLayout
+                android:id="@+id/trailers_view_layout"
+                style="@style/match_wrap"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    style="@style/match_wrap"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:gravity="left"
+                    android:padding="@dimen/dimen_10"
+                    android:text="Address:"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/textsize_18" />
+
+                <TextView
+                    style="@style/match_wrap"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="left"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:paddingRight="@dimen/dimen_10"
+                    android:text="Beside Heritage Fresh, 5th Floor, Kimtee Square Bulding, Road 12, Banjara Hills, Hyderabad"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/textsize_16" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/reviews_view_layout"
+                style="@style/match_wrap"
+                android:layout_below="@+id/trailers_view_layout"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_10"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/match_wrap"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="left"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:paddingTop="@dimen/dimen_10"
+                    android:text="Menu Items"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/textsize_22"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/dynamic_reviews_layout"
+                    style="@style/match_wrap"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>
