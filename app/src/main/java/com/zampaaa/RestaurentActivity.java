@@ -80,7 +80,10 @@ public class RestaurentActivity extends BaseActivity implements View.OnClickList
                 Intent orderIntent = new Intent(RestaurentActivity.this, OrdersActivity.class);
                 startActivity(orderIntent);
                 break;
-
+            case R.id.reports:
+                Intent reportIntent = new Intent(RestaurentActivity.this, ReportsActivity.class);
+                startActivity(reportIntent);
+                break;
         }
     }
 }
