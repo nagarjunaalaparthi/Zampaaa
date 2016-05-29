@@ -23,15 +23,20 @@ import java.util.ArrayList;
  */
 public class ItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private RestaurentFragment activity;
-    private  ArrayList<Item> items = new ArrayList<>();
 
-    public ItemsAdapter(ArrayList<Item> items) {
-        this.items = items;
+    public ArrayList<Item> getItems() {
+        return items;
     }
 
-    public ItemsAdapter(RestaurentFragment activity , ArrayList<Item> items) {
-        this.activity = activity;
+    public void setItems(ArrayList<Item> items) {
         this.items = items;
+        notifyDataSetChanged();
+    }
+
+    private  ArrayList<Item> items = new ArrayList<>();
+
+    public ItemsAdapter(RestaurentFragment activity ) {
+        this.activity = activity;
     }
 
     @Override
