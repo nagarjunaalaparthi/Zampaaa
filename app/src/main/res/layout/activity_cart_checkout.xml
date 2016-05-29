@@ -25,7 +25,7 @@
                 style="@style/match_wrap"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="left"
-                android:text="Restaurants"
+                android:text="Cart"
                 android:textColor="@android:color/white"
                 android:textSize="22sp" />
 
@@ -33,6 +33,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_restaurants" />
+    <include layout="@layout/content_cart_checkout" />
 
 </android.support.design.widget.CoordinatorLayout>

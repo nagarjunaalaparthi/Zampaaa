@@ -10,14 +10,13 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             style="@style/match_match"
-            android:onClick="onClick"
             app:collapsedTitleTextAppearance="@style/TextAppearance.Collapsed"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleTextAppearance="@style/HeaderTitleStyle"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:titleTextColor="@android:color/white">
 
-            <include layout="@layout/content_movie_details_header" />
+            <include layout="@layout/content_restaurant_details_header" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -35,18 +34,40 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_movies_details" />
+    <include layout="@layout/content_restaurant_details" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
         android:layout_alignParentBottom="true"
-        app:backgroundTint="@android:color/holo_green_dark"
         android:layout_alignParentRight="true"
         android:layout_gravity="end|bottom"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/icon_unfavourite" />
+        android:padding="@dimen/dimen_10">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/rsz_shopping_cart"
+            app:backgroundTint="@android:color/holo_green_dark" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rectangle_bg"
+            android:elevation="7dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/dimen_10"
+            android:paddingRight="@dimen/dimen_10"
+            android:paddingTop="5dp"
+            android:text="10"
+            android:textColor="@android:color/white" />
+    </FrameLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>

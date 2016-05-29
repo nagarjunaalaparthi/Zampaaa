@@ -6,15 +6,19 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".ZampaaaApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -23,9 +27,16 @@
             android:name="io.fabric.ApiKey"
             android:value="af1840f27103d3605d52ba92683bcf5cc21a44fc" />
 
-        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".RestaurantsActivity"></activity>
         <activity android:name=".RestaurantDetailsActivity"></activity>
+        <activity android:name=".CartActivity"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

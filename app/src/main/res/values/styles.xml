@@ -26,7 +26,7 @@
 
     <style name="TextAppearance.Collapsed" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="match_match">
@@ -47,6 +47,11 @@
     <style name="wrap_wrap">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorSecondaryText</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
 
 </resources>

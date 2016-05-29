@@ -19,9 +19,9 @@
                     android:gravity="left"
                     android:padding="@dimen/dimen_10"
                     android:text="Address:"
-                    android:textStyle="bold"
                     android:textColor="@color/colorPrimaryText"
-                    android:textSize="@dimen/textsize_18" />
+                    android:textSize="@dimen/textsize_18"
+                    android:textStyle="bold" />
 
                 <TextView
                     style="@style/match_wrap"
@@ -36,26 +36,24 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/reviews_view_layout"
+                android:id="@+id/menu_view_layout"
                 style="@style/match_wrap"
                 android:layout_below="@+id/trailers_view_layout"
                 android:orientation="vertical"
-                android:padding="@dimen/dimen_10"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     style="@style/match_wrap"
-                    android:fontFamily="sans-serif-condensed"
+                    android:fontFamily="sans-serif-smallcaps"
                     android:gravity="left"
-                    android:paddingBottom="@dimen/dimen_10"
-                    android:paddingTop="@dimen/dimen_10"
-                    android:text="Menu Items"
+                    android:padding="@dimen/dimen_10"
+                    android:text="Menu"
                     android:textColor="@color/colorPrimaryText"
-                    android:textSize="@dimen/textsize_22"
+                    android:textSize="@dimen/textsize_18"
                     android:textStyle="bold" />
 
                 <LinearLayout
-                    android:id="@+id/dynamic_reviews_layout"
+                    android:id="@+id/dynamic_menu_layout"
                     style="@style/match_wrap"
                     android:orientation="vertical">
 

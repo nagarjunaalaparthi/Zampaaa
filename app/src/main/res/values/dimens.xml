@@ -6,6 +6,7 @@
     <dimen name="dimen_8">8dp</dimen>
     <dimen name="dimen_5">5dp</dimen>
     <dimen name="dimen_10">10dp</dimen>
+    <dimen name="dimen_15">15dp</dimen>
     <dimen name="textsize_22">22sp</dimen>
     <dimen name="textsize_16">16sp</dimen>
     <dimen name="textsize_20">20sp</dimen>

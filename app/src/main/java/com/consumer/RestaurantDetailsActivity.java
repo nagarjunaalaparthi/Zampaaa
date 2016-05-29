@@ -14,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.consumer.model.Restaurant;
+
 
 /**
  * Created by naresh poola on 16/4/16.
@@ -25,6 +27,7 @@ public class RestaurantDetailsActivity extends BaseActivity implements AppConsta
     ImageView mMovieBannerImage;
     Toolbar toolbar;
     FloatingActionButton favouriteFab;
+    private int vibrant = -1;
     private Restaurant restaurant;
     private String youTubeVideoId = "mK5xvHhWbJI";
 
@@ -32,7 +35,7 @@ public class RestaurantDetailsActivity extends BaseActivity implements AppConsta
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_details);
+        setContentView(R.layout.activity_restaurant_details);
         init();
         setSupportActionBar(toolbar);
         setBackNavigationIcon();
@@ -49,11 +52,12 @@ public class RestaurantDetailsActivity extends BaseActivity implements AppConsta
 
     void init() {
         mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        mMovieBannerImage = (ImageView)findViewById(R.id.movie_image_banner);
+        mMovieBannerImage = (ImageView) findViewById(R.id.movie_image_banner);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         favouriteFab = (FloatingActionButton) findViewById(R.id.fab);
         setDataToViews();
         mCollapsingToolbarLayout.setOnClickListener(this);
+        favouriteFab.setOnClickListener(this);
     }
 
     void setDataToViews() {
@@ -69,7 +73,7 @@ public class RestaurantDetailsActivity extends BaseActivity implements AppConsta
     Palette.PaletteAsyncListener paletteListener = new Palette.PaletteAsyncListener() {
         public void onGenerated(Palette palette) {
             int defaultColor = 0x000000;
-            int vibrant = palette.getVibrantColor(defaultColor);
+            vibrant = palette.getVibrantColor(defaultColor);
             int vibrantLight = palette.getLightVibrantColor(defaultColor);
             int vibrantDark = palette.getDarkVibrantColor(defaultColor);
             mCollapsingToolbarLayout.setBackgroundColor(vibrant);
@@ -95,7 +99,9 @@ public class RestaurantDetailsActivity extends BaseActivity implements AppConsta
                 }
                 break;
             case R.id.fab:
-
+                Intent intent = new Intent(RestaurantDetailsActivity.this, CartActivity.class);
+                intent.putExtra(IBundleParams.RESULT_OBJ, vibrant);
+                startActivity(intent);
                 break;
         }
     }

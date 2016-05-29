@@ -21,4 +21,23 @@
         android:scaleType="centerInside"
         android:src="@drawable/video_play" />
 
+    <TextView
+        android:id="@+id/rest_rating"
+        style="@style/wrap_wrap"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rounded_corners"
+        android:ellipsize="end"
+        android:layout_margin="@dimen/dimen_15"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="left"
+        android:maxLines="1"
+        android:paddingBottom="5dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="5dp"
+        android:text="4.5"
+        android:textColor="@android:color/white"
+        android:textSize="12sp" />
+
 </RelativeLayout>

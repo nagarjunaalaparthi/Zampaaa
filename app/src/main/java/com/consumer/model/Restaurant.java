@@ -1,4 +1,4 @@
-package com.consumer;
+package com.consumer.model;
 
 import java.io.Serializable;
 

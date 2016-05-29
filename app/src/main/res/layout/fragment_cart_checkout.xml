@@ -1,0 +1,130 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/match_match"
+    tools:showIn="@layout/activity_cart_checkout">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/place_order">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_10">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="@dimen/dimen_5"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Your Delivery Details"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/textsize_16" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:padding="@dimen/dimen_10"
+                    android:text="Username"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/textsize_16" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:padding="@dimen/dimen_10"
+                    android:text="Phone Number."
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/textsize_16" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:padding="@dimen/dimen_10"
+                    android:text="Select Address"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/textsize_16" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="@dimen/dimen_5"
+                android:fontFamily="sans-serif-smallcaps"
+                android:paddingTop="@dimen/dimen_15"
+                android:text="Item Summary"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/textsize_16" />
+
+            <LinearLayout
+                android:id="@+id/item_details_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_margin="@dimen/dimen_10"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:text="SubTotal"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/textsize_16" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="@dimen/dimen_10"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:text="₹600"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/textsize_16" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/place_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:height="?attr/actionBarSize"
+        android:background="@color/colorAccent"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:text="Place Order"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/textsize_18"
+        android:textStyle="bold" />
+</RelativeLayout>

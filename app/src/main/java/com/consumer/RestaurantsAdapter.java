@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.consumer.model.Restaurant;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -32,6 +34,7 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public class RestaurantViewHolder extends RecyclerView.ViewHolder {
         public TextView mTitle;
         public TextView mAddr;
+        public TextView mFeatured;
         public ImageView mImage;
         public CardView mCardView;
 
@@ -39,6 +42,7 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             super(view);
             mTitle = (TextView) view.findViewById(R.id.rest_name);
             mAddr = (TextView) view.findViewById(R.id.rest_addr);
+            mFeatured = (TextView) view.findViewById(R.id.rest_featured);
             mImage = (ImageView) view.findViewById(R.id.rest_image);
             mCardView = (CardView) view.findViewById(R.id.movie_card_view);
             mCardView.setOnClickListener(onClickListener);
@@ -84,7 +88,7 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_movie_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_restaurant_item, parent, false);
         return new RestaurantViewHolder(view);
     }
 
@@ -96,6 +100,11 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         restaurantViewHolder.mAddr.setText(restaurant.getAddress());
         restaurantViewHolder.mImage.setImageResource(restaurant.getImageDrawbale());
         restaurantViewHolder.mCardView.setTag(restaurant);
+        if(position%3==0){
+            restaurantViewHolder.mFeatured.setVisibility(View.VISIBLE);
+        }else{
+            restaurantViewHolder.mFeatured.setVisibility(View.GONE);
+        }
     }
 
     @Override

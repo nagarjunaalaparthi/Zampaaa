@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match_wrap"
+    android:background="?android:selectableItemBackground">
+
+    <LinearLayout
+        style="@style/match_wrap"
+        android:layout_marginLeft="@dimen/dimen_8"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/menu_header"
+            style="@style/match_wrap"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="left"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:text="classics"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/menu_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:paddingTop="@dimen/dimen_8"
+                android:src="@drawable/green_dot" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_5">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/menu_name"
+                        style="@style/wrap_wrap"
+                        android:ellipsize="end"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="left"
+                        android:maxLines="1"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="Expresso Italiano"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/menu_price"
+                        style="@style/wrap_wrap"
+                        android:layout_alignParentRight="true"
+                        android:ellipsize="end"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="left"
+                        android:maxLines="1"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="₹120"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/menu_desc"
+                    style="@style/match_wrap"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="left"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="30dp"
+                    android:text="Dark...Divine...Coffee straight from the magical beans... strong black coffee served without milk"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="14sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right">
+
+                    <TextView
+                        android:id="@+id/add_quantity"
+                        style="@style/wrap_wrap"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dimen_5"
+                        android:background="@drawable/rounded_corners"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp"
+                        android:text="Add"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
+

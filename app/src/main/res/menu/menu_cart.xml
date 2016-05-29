@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".app.MoviesActivity">
+    <item
+        android:id="@+id/action_shopping_cart"
+        app:actionLayout="@layout/cart_badge_layout"
+        android:orderInCategory="100"
+        android:title="Shopping Cart"
+        app:showAsAction="always" />
+
+</menu>
