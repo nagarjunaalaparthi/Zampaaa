@@ -1,9 +1,5 @@
 package com.zampaaa.Analytics;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zampaaa.Items.AddItemsToMenuActivity;
 import com.zampaaa.Model.Item;
 import com.zampaaa.R;
-import com.zampaaa.RestaurentActivity;
 
 import java.util.ArrayList;
 
@@ -22,11 +16,11 @@ import java.util.ArrayList;
  * Created by Softapt on 28/05/2016.
  */
 public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private ReportsActivity activity;
+    private ProductAnalytics activity;
     private ArrayList<Item> items = new ArrayList<>();
 
 
-    public ProductAdapter(ReportsActivity activity, ArrayList<Item> items) {
+    public ProductAdapter(ProductAnalytics activity, ArrayList<Item> items) {
         this.activity = activity;
         this.items = items;
     }

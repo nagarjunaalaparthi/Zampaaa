@@ -6,11 +6,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.digits.sdk.android.AuthCallback;
 import com.digits.sdk.android.Digits;
-import com.digits.sdk.android.DigitsAuthButton;
 import com.digits.sdk.android.DigitsAuthConfig;
 import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsSession;
@@ -48,7 +46,7 @@ public class LoginActivity extends BaseActivity {
         @Override
         public void success(DigitsSession session, String phoneNumber) {
             // TODO: associate the session userID with your user model
-            Intent restaurentIntent = new Intent(LoginActivity.this, RestaurentActivity.class);
+            Intent restaurentIntent = new Intent(LoginActivity.this, RestaurentFragment.class);
             startActivity(restaurentIntent);
             SharedPreferenceUtils.writeBoolean(LoginActivity.this,"login",true);
             finish();

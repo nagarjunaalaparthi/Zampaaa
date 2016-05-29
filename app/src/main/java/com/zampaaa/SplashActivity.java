@@ -20,7 +20,7 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void run() {
                 if(SharedPreferenceUtils.readBoolean(SplashActivity.this,"login",false)){
-                    Intent homeIntent = new Intent(SplashActivity.this, RestaurentActivity.class);
+                    Intent homeIntent = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(homeIntent);
                 }else{
                     Intent homeIntent = new Intent(SplashActivity.this, LoginActivity.class);

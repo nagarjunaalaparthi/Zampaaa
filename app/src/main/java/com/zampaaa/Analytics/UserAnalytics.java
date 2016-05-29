@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zampaaa.BaseFragment;
-import com.zampaaa.Items.ItemsAdapter;
 import com.zampaaa.R;
 
 /**
@@ -38,7 +37,7 @@ public class UserAnalytics extends BaseFragment{
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        UserAdapter adapter = new UserAdapter(((ReportsActivity)getActivity()),null);
+        UserAdapter adapter = new UserAdapter(UserAnalytics.this,null);
         recyclerView.setAdapter(adapter);
     }
 }

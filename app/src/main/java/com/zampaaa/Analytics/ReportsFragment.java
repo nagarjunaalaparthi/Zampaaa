@@ -1,49 +1,81 @@
-package com.zampaaa.orders;
+package com.zampaaa.Analytics;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.zampaaa.BaseActivity;
+import com.zampaaa.BaseFragment;
 import com.zampaaa.R;
 
 /**
  * Created by Softapt on 28/05/2016.
  */
-public class OrdersActivity extends BaseActivity implements TabLayout.OnTabSelectedListener {
+public class ReportsFragment extends BaseFragment implements TabLayout.OnTabSelectedListener {
     //This is our tablayout
     private TabLayout tabLayout;
 
     //This is our viewPager
     private ViewPager viewPager;
+    private TextView selectFrequency;
+    CharSequence[] items = new CharSequence[]{"daily", "weekly", "monthly", "yearly"};
+    private String selectFrequencyText = "";
+    View view = null;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_orders);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if (view == null) {
+            view = inflater.inflate(R.layout.activity_reports, container, false);
+            initViews(view);
 
-        //Adding toolbar to the activity
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        } else {
 
-        //Initializing the tablayout
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        }
+        return view;
+    }
+
+    private void initViews(View view) {
+        tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
 
         //Adding the tabs using addTab() method
-        tabLayout.addTab(tabLayout.newTab().setText("Requested Orders"));
-        tabLayout.addTab(tabLayout.newTab().setText("Approved Orders"));
-        tabLayout.addTab(tabLayout.newTab().setText("Prepared Orders"));
+        tabLayout.addTab(tabLayout.newTab().setText("User Reports"));
+        tabLayout.addTab(tabLayout.newTab().setText("Product Reports"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
+        selectFrequency = (TextView) view.findViewById(R.id.select_frequency);
+        selectFrequency.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        selectFrequency.setText("Selected Frequency : " + items[i]);
+                        selectFrequencyText = items[i].toString();
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.create();
+                builder.show();
+            }
+        });
         //Initializing viewPager
-        viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager = (ViewPager) view.findViewById(R.id.pager);
 
         //Creating our pager adapter
-        Pager adapter = new Pager(getSupportFragmentManager(), tabLayout.getTabCount());
+        Pager adapter = new Pager(getChildFragmentManager(), tabLayout.getTabCount());
 
         //Adding adapter to pager
         viewPager.setAdapter(adapter);
@@ -53,6 +85,7 @@ public class OrdersActivity extends BaseActivity implements TabLayout.OnTabSelec
 
         viewPager.addOnPageChangeListener(pageLister);
     }
+
 
     ViewPager.OnPageChangeListener pageLister = new ViewPager.OnPageChangeListener() {
         @Override
@@ -70,6 +103,7 @@ public class OrdersActivity extends BaseActivity implements TabLayout.OnTabSelec
 
         }
     };
+
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
         viewPager.setCurrentItem(tab.getPosition());
@@ -103,14 +137,11 @@ public class OrdersActivity extends BaseActivity implements TabLayout.OnTabSelec
             //Returning the current tabs
             switch (position) {
                 case 0:
-                    RequestedOrderFragment tab1 = new RequestedOrderFragment();
+                    UserAnalytics tab1 = new UserAnalytics();
                     return tab1;
                 case 1:
-                    RequestedOrderFragment tab2 = new RequestedOrderFragment();
+                    ProductAnalytics tab2 = new ProductAnalytics();
                     return tab2;
-                case 2:
-                    RequestedOrderFragment tab3 = new RequestedOrderFragment();
-                    return tab3;
                 default:
                     return null;
             }

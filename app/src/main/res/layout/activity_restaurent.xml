@@ -69,32 +69,6 @@
         android:layout_margin="16dp"
         android:onClick="onClick"
         android:src="@android:drawable/ic_input_add" />
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/reports"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="bottom"
-        android:layout_margin="16dp"
-        android:onClick="onClick"
-        android:src="@drawable/clipboard_icon_green" />
-
-    <TextView
-        android:id="@+id/order_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="start|bottom"
-        android:background="@drawable/order_bg"
-        android:gravity="center"
-        android:onClick="onClick"
-        android:layout_margin="16dp"
-        android:text="12"
-        android:textColor="@color/colorAccent"
-        android:textStyle="bold"
-
-        />
 
 
 </android.support.design.widget.CoordinatorLayout>

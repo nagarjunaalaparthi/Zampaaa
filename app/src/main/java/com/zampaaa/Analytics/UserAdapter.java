@@ -4,12 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zampaaa.Model.User;
 import com.zampaaa.R;
-import com.zampaaa.RestaurentActivity;
 
 import java.util.ArrayList;
 
@@ -17,11 +15,11 @@ import java.util.ArrayList;
  * Created by Softapt on 28/05/2016.
  */
 public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private ReportsActivity activity;
+    private UserAnalytics activity;
     private ArrayList<User> users = new ArrayList<>();
 
 
-    public UserAdapter(ReportsActivity activity, ArrayList<User> items) {
+    public UserAdapter(UserAnalytics activity, ArrayList<User> items) {
         this.activity = activity;
         this.users = items;
     }

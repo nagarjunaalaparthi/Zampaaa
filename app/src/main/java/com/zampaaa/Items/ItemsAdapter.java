@@ -11,9 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zampaaa.MainActivity;
 import com.zampaaa.Model.Item;
 import com.zampaaa.R;
-import com.zampaaa.RestaurentActivity;
+import com.zampaaa.RestaurentFragment;
 
 import java.util.ArrayList;
 
@@ -21,14 +22,14 @@ import java.util.ArrayList;
  * Created by Softapt on 28/05/2016.
  */
 public class ItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private  RestaurentActivity activity;
+    private RestaurentFragment activity;
     private  ArrayList<Item> items = new ArrayList<>();
 
     public ItemsAdapter(ArrayList<Item> items) {
         this.items = items;
     }
 
-    public ItemsAdapter(RestaurentActivity activity , ArrayList<Item> items) {
+    public ItemsAdapter(RestaurentFragment activity , ArrayList<Item> items) {
         this.activity = activity;
         this.items = items;
     }
@@ -55,11 +56,11 @@ public class ItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         itemViewHolder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Item item = activity.dbHelper.getItem(items.get(position).getId());
+                Item item = ((MainActivity)activity.getActivity()).dbHelper.getItem(items.get(position).getId());
                 if(item!=null){
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("item",item);
-                    Intent editIntent = new Intent(activity,AddItemsToMenuActivity.class);
+                    Intent editIntent = new Intent(activity.getActivity(),AddItemsToMenuActivity.class);
                     editIntent.putExtras(bundle);
                     activity.startActivity(editIntent);
                 }
@@ -69,14 +70,14 @@ public class ItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             @Override
             public void onClick(View view) {
                 if(activity!=null) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(activity.getActivity());
                     builder.setTitle("Delete");
                     builder.setMessage("You want to remove this item from the list?");
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             if(activity!=null){
-                                activity.dbHelper.deleteItem(items.get(position).getId());
+                                ((MainActivity)activity.getActivity()).dbHelper.deleteItem(items.get(position).getId());
                                 activity.setDataToAdapter();
                             }
                             dialogInterface.dismiss();
