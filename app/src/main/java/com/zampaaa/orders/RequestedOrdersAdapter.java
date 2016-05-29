@@ -44,7 +44,10 @@ public class RequestedOrdersAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             public void onClick(View view) {
                 Intent intent = new Intent(requestedOrderFragment.getActivity(),OrderDetailsActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("order",ordersList.get(position));
+                if(ordersList!=null && ordersList.size() > 0) {
+                    bundle.putSerializable("order", ordersList.get(position));
+                }
+                intent.putExtras(bundle);
                 requestedOrderFragment.getActivity().startActivity(intent);
             }
         });

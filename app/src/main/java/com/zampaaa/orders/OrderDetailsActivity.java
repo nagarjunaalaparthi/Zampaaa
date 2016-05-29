@@ -17,6 +17,7 @@ import com.zampaaa.BaseActivity;
 import com.zampaaa.Model.Item;
 import com.zampaaa.Model.Order;
 import com.zampaaa.R;
+import com.zampaaa.Utils.SharedPreferenceUtils;
 
 import java.util.ArrayList;
 
@@ -60,18 +61,18 @@ public class OrderDetailsActivity extends BaseActivity {
     }
 
     private void initViews() {
-        if(order!=null){
-            orderBy.setText(getString(R.string.orderedby,order.getOrderPlacedby()+", "+order.getMobileNumber()));
-            totalAmount.setText(getString(R.string.totalAmt,order.getTotalAmt()));
+        if (order != null) {
+            orderBy.setText(getString(R.string.orderedby, order.getOrderPlacedby() + ", " + order.getMobileNumber()));
+            totalAmount.setText(getString(R.string.totalAmt, order.getTotalAmt()));
             selectedItems = order.getItems();
-            adapter = new OrderDetailsAdapter(OrderDetailsActivity.this,selectedItems);
+            adapter = new OrderDetailsAdapter(OrderDetailsActivity.this, selectedItems);
             recyclerView.setAdapter(adapter);
         }
     }
 
     private void getBundleData() {
         Bundle bundle = getIntent().getExtras();
-        if(bundle.containsKey("order")){
+        if (bundle != null && bundle.containsKey("order")) {
             order = (Order) bundle.getSerializable("order");
         }
     }
@@ -103,6 +104,9 @@ public class OrderDetailsActivity extends BaseActivity {
                     break;
                 case R.id.approve:
                     // TODO : approve and offer check
+                    SharedPreferenceUtils.writeBoolean(OrderDetailsActivity.this, "orderKey", true);
+                    SharedPreferenceUtils.writeString(OrderDetailsActivity.this, "orderId", order.getOrderId());
+                    finish();
                     break;
                 case R.id.give_offer:
                     final AlertDialog.Builder offerBuilder = new AlertDialog.Builder(OrderDetailsActivity.this);

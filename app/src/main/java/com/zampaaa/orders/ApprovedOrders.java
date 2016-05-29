@@ -35,6 +35,8 @@ public class ApprovedOrders extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        adapter = new ApprovedOrdersAdapter(ApprovedOrders.this,approvedOrders);
+        recyclerView.setAdapter(adapter);
     }
     private void initViews(View view) {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);

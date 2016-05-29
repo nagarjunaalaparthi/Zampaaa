@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
@@ -14,7 +15,11 @@ import android.view.ViewGroup;
 
 import com.zampaaa.BaseActivity;
 import com.zampaaa.BaseFragment;
+import com.zampaaa.Model.Item;
+import com.zampaaa.Model.Order;
 import com.zampaaa.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by Softapt on 28/05/2016.
@@ -40,6 +45,8 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
         return view;
     }
 
+
+
     private void initViews(View view) {
         tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
 
@@ -60,7 +67,7 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
 
         //Adding onTabSelectedListener to swipe views
         tabLayout.setOnTabSelectedListener(this);
-
+        viewPager.setOffscreenPageLimit(3);
         viewPager.addOnPageChangeListener(pageLister);
     }
 
@@ -98,7 +105,7 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
 
     }
 
-    public class Pager extends FragmentStatePagerAdapter {
+    public class Pager extends FragmentPagerAdapter {
 
         //integer to count number of tabs
         int tabCount;

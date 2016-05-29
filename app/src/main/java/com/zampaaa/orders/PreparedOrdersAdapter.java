@@ -1,5 +1,7 @@
 package com.zampaaa.orders;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.zampaaa.MainActivity;
 import com.zampaaa.Model.Item;
 import com.zampaaa.Model.Order;
 import com.zampaaa.R;
@@ -33,19 +36,35 @@ public class PreparedOrdersAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        OrderViewHolder OrderViewHolder = (OrderViewHolder) holder;
+        final OrderViewHolder OrderViewHolder = (OrderViewHolder) holder;
         if (ordersList != null) {
             Order order = ordersList.get(position);
             OrderViewHolder.orderId.setText(order.getOrderId());
             OrderViewHolder.status.setVisibility(View.VISIBLE);
-            OrderViewHolder.status.setText(order.getStatus());
+            OrderViewHolder.status.setText("status :\n" + order.getStatus());
         }
-        OrderViewHolder.layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Todo : QR Code
-            }
-        });
+        OrderViewHolder.layout.
+                setOnClickListener(new View.OnClickListener() {
+                                       @Override
+                                       public void onClick(View view) {
+                                           AlertDialog.Builder builder = new AlertDialog.Builder(preparedOrders.getActivity());
+                                           builder.setTitle("Complete");
+                                           builder.setMessage("Is This order delivered?");
+                                           builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                               @Override
+                                               public void onClick(DialogInterface dialogInterface, int i) {
+                                                   OrderViewHolder.status.setText("status :\n" + "delivered successfully");
+                                                   dialogInterface.dismiss();
+                                               }
+                                           });
+                                           builder.setNegativeButton("No", null);
+                                           builder.create();
+                                           builder.show();
+                                       }
+
+                                   }
+
+                );
     }
 
     @Override

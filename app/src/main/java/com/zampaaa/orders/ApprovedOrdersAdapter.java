@@ -1,5 +1,7 @@
 package com.zampaaa.orders;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,11 +34,29 @@ public class ApprovedOrdersAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        OrderViewHolder OrderViewHolder = (OrderViewHolder) holder;
+        final OrderViewHolder OrderViewHolder = (OrderViewHolder) holder;
         if (ordersList != null) {
-            Order order = ordersList.get(position);
+            final Order order = ordersList.get(position);
             OrderViewHolder.orderId.setText(order.getOrderId());
-
+            OrderViewHolder.orderId.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(approvedOrders.getActivity());
+                    builder.setTitle("Preapared");
+                    builder.setMessage("Is This order prepared?");
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            approvedOrders.preparedOrders.add(order);
+                            approvedOrders.approvedOrders.remove(order);
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    builder.setNegativeButton("No", null);
+                    builder.create();
+                    builder.show();
+                }
+            });
         }
     }
 

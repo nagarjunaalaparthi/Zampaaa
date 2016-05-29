@@ -35,6 +35,8 @@ public class PreparedOrders extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        adapter = new PreparedOrdersAdapter(PreparedOrders.this,preparedOrders);
+        recyclerView.setAdapter(adapter);
     }
     private void initViews(View view) {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
