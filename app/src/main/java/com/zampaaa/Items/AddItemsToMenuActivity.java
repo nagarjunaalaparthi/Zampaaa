@@ -12,9 +12,17 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.zampaaa.BaseActivity;
 import com.zampaaa.Model.Item;
 import com.zampaaa.R;
+import com.zampaaa.Utils.SharedPreferenceUtils;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Softapt on 28/05/2016.
@@ -29,6 +37,7 @@ public class AddItemsToMenuActivity extends BaseActivity implements View.OnClick
     private String selectedCategory = "";
     private Item selectedItem;
     private RadioButton nonveg,veg;
+    private DatabaseReference mDatabase;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -39,6 +48,7 @@ public class AddItemsToMenuActivity extends BaseActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         group = (RadioGroup) findViewById(R.id.group);
         veg = (RadioButton) findViewById(R.id.veg);
         nonveg = (RadioButton) findViewById(R.id.nonveg);
@@ -101,12 +111,14 @@ public class AddItemsToMenuActivity extends BaseActivity implements View.OnClick
                 }else{
                     item.setVegType("non-veg");
                 }
-                    if(selectedItem!=null) {
-                        item.setId(selectedItem.getId());
-                        dbHelper.UpdateItem(item);
+                if(selectedItem!=null) {
+                    item.setId(selectedItem.getId());
+                    dbHelper.UpdateItem(item);
+                    updateItem(item);
                 }else {
                     dbHelper.insertItem(item);
-                    }
+                    updateItem(item);
+                }
                 finish();
             }
         }
@@ -116,8 +128,28 @@ public class AddItemsToMenuActivity extends BaseActivity implements View.OnClick
         if(TextUtils.isEmpty(itemName.getText().toString()) || TextUtils.isEmpty(itemPrice.getText().toString()) || selectedCategory.length() == 0){
             Toast.makeText(AddItemsToMenuActivity.this,"Please add all details",Toast.LENGTH_SHORT).show();
             return false;
-        }else{
+        } else {
             return true;
         }
+    }
+
+    private void updateItem(Item item){
+        String path = "/merchants/" +SharedPreferenceUtils.readString(AddItemsToMenuActivity.this,"currentUserId","")
+                +"/restaurant/itemDetails/";
+        String key = mDatabase.child(path).push().getKey();
+        Map<String, Object> itemValues = item.toMap();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put(path+key , itemValues);
+
+        mDatabase.updateChildren(childUpdates);
+
+        /*mDatabase.child("merchants").child(SharedPreferenceUtils.readString(AddItemsToMenuActivity.this,"currentUserId",""))
+                .child("restaurant").child("itemDetails").setValue(item, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                finish();
+            }
+        });*/
     }
 }

@@ -7,15 +7,23 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.zampaaa.Items.AddItemsToMenuActivity;
 import com.zampaaa.Items.ItemsAdapter;
 import com.zampaaa.Model.Item;
+import com.zampaaa.Utils.SharedPreferenceUtils;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 public class RestaurentFragment extends BaseFragment implements View.OnClickListener {
@@ -26,7 +34,7 @@ public class RestaurentFragment extends BaseFragment implements View.OnClickList
     private FloatingActionButton actionButton;
     private ArrayList<Item> items = new ArrayList<>();
 
-
+    private DatabaseReference mDatabase;
     View view = null;
 
     @Nullable
@@ -56,6 +64,7 @@ public class RestaurentFragment extends BaseFragment implements View.OnClickList
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         actionButton = (FloatingActionButton) view.findViewById(R.id.fab);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
     @Override
@@ -65,9 +74,32 @@ public class RestaurentFragment extends BaseFragment implements View.OnClickList
     }
 
     public void setDataToAdapter() {
-        items = ((MainActivity) getActivity()).dbHelper.getItems();
-        ItemsAdapter adapter = new ItemsAdapter(RestaurentFragment.this, items);
+        final String path = "/merchants/" + SharedPreferenceUtils.readString(getActivity(),"currentUserId","")
+                +"/restaurant/itemDetails/";
+        final ItemsAdapter adapter = new ItemsAdapter(RestaurentFragment.this);
         recyclerView.setAdapter(adapter);
+        //items = ((MainActivity) getActivity()).dbHelper.getItems();
+        mDatabase.child(path).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.e("ItemsList",dataSnapshot.getChildren().iterator().next().getKey()+"");
+           //    for(int i =0 ;i<dataSnapshot.getChildrenCount();i++){
+                items.clear();
+                Iterator<DataSnapshot> iterator = dataSnapshot.getChildren().iterator();
+                while(iterator.hasNext()){
+                   DataSnapshot temp = iterator.next();
+                    String child = temp.getKey();
+                    items.add(dataSnapshot.child(child).getValue(Item.class));
+                }
+                adapter.setItems(items);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     @Override
