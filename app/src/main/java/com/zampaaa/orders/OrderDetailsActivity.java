@@ -93,6 +93,7 @@ public class OrderDetailsActivity extends BaseActivity {
                             if (text.getText().toString().trim().length() > 0) {
                                 // TODO : order cancellation from merchant side
                                 dialogInterface.dismiss();
+                                finish();
                             } else {
                                 Toast.makeText(OrderDetailsActivity.this, "please enter the message", Toast.LENGTH_SHORT).show();
                             }

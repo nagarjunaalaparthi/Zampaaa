@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Zampaaa</string>
-    <string name="orderedby">ordered by :\n1%S$</string>
-    <string name="totalAmt">total amount :\n₹.%S$</string>
+    <string name="orderedby">ordered by :\n%s</string>
+    <string name="totalAmt">total amount :\n₹.%s</string>
 </resources>

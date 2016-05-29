@@ -41,7 +41,7 @@ public class PreparedOrdersAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             Order order = ordersList.get(position);
             OrderViewHolder.orderId.setText(order.getOrderId());
             OrderViewHolder.status.setVisibility(View.VISIBLE);
-            OrderViewHolder.status.setText("status :\n" + order.getStatus());
+//            OrderViewHolder.status.setText("status :\n" + order.getStatus());
         }
         OrderViewHolder.layout.
                 setOnClickListener(new View.OnClickListener() {

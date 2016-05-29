@@ -31,20 +31,43 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
     //This is our viewPager
     private ViewPager viewPager;
     View view = null;
+    private RequestedOrderFragment requestedOrderFragment;
+    private PreparedOrders PreparedOrdersFragment;
+    private ApprovedOrders approvedOrdersFragment;
+    public ArrayList<Order> preparedOrders;
+    public ArrayList<Order> approvedOrders;
+
+    public ArrayList<Order> getApprovedOrders() {
+        return approvedOrders;
+    }
+
+    public void setApprovedOrders(ArrayList<Order> approvedOrders) {
+        this.approvedOrders = approvedOrders;
+    }
+
+
+    public ArrayList<Order> getPreparedOrders() {
+        return preparedOrders;
+    }
+
+    public void setPreparedOrders(ArrayList<Order> preparedOrders) {
+        this.preparedOrders = preparedOrders;
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.activity_orders, container, false);
-            initViews(view);
+            approvedOrders = new ArrayList<>();
 
+            preparedOrders = new ArrayList<>();
+            initViews(view);
         } else {
 
         }
         return view;
     }
-
 
 
     private void initViews(View view) {
@@ -80,7 +103,14 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
 
         @Override
         public void onPageSelected(int position) {
+
             tabLayout.getTabAt(position).select();
+            if(position == 1){
+                approvedOrdersFragment.setDataToAdapter(approvedOrders);
+
+            }else if(position == 2){
+                PreparedOrdersFragment.setDataToAdapter(preparedOrders);
+            }
         }
 
         @Override
@@ -123,14 +153,14 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
             //Returning the current tabs
             switch (position) {
                 case 0:
-                    RequestedOrderFragment tab1 = new RequestedOrderFragment();
-                    return tab1;
+                    requestedOrderFragment = new RequestedOrderFragment();
+                    return requestedOrderFragment;
                 case 1:
-                    ApprovedOrders tab2 = new ApprovedOrders();
-                    return tab2;
+                    approvedOrdersFragment = new ApprovedOrders();
+                    return approvedOrdersFragment;
                 case 2:
-                    PreparedOrders tab3 = new PreparedOrders();
-                    return tab3;
+                    PreparedOrdersFragment = new PreparedOrders();
+                    return PreparedOrdersFragment;
                 default:
                     return null;
             }

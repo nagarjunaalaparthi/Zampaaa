@@ -10,7 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zampaaa.BaseFragment;
+import com.zampaaa.Model.Order;
 import com.zampaaa.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by Softapt on 29/05/2016.
@@ -35,7 +38,10 @@ public class ApprovedOrders extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        adapter = new ApprovedOrdersAdapter(ApprovedOrders.this,approvedOrders);
+    }
+
+    public void setDataToAdapter(ArrayList<Order> orders){
+        adapter = new ApprovedOrdersAdapter(ApprovedOrders.this,orders);
         recyclerView.setAdapter(adapter);
     }
     private void initViews(View view) {
@@ -45,5 +51,11 @@ public class ApprovedOrders extends BaseFragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         adapter = new ApprovedOrdersAdapter(ApprovedOrders.this,null);
         recyclerView.setAdapter(adapter);
+    }
+
+    public void deleteOrder(Order order) {
+        ((OrdersFragment)ApprovedOrders.this.getParentFragment()).approvedOrders.remove(order);
+        setDataToAdapter(((OrdersFragment) ApprovedOrders.this.getParentFragment()).approvedOrders);
+        ((OrdersFragment)ApprovedOrders.this.getParentFragment()).preparedOrders.add(order);
     }
 }

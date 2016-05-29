@@ -10,7 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zampaaa.BaseFragment;
+import com.zampaaa.Model.Order;
 import com.zampaaa.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by Softapt on 29/05/2016.
@@ -35,9 +38,14 @@ public class PreparedOrders extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        adapter = new PreparedOrdersAdapter(PreparedOrders.this,preparedOrders);
+    }
+
+    public void setDataToAdapter(ArrayList<Order> orders){
+        adapter = new PreparedOrdersAdapter(PreparedOrders.this,orders);
         recyclerView.setAdapter(adapter);
     }
+
+
     private void initViews(View view) {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         layoutManager = new LinearLayoutManager(getActivity());

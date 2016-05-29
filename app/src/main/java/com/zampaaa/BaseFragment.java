@@ -1,5 +1,6 @@
 package com.zampaaa;
 
+import android.app.ProgressDialog;
 import android.support.v4.app.Fragment;
 
 import com.zampaaa.Model.Order;
@@ -11,23 +12,27 @@ import java.util.ArrayList;
  */
 public class BaseFragment extends Fragment {
 
-    public ArrayList<Order> getApprovedOrders() {
-        return approvedOrders;
+    private ProgressDialog mDialog;
+
+    public void showProgress() {
+
+        if (mDialog == null) {
+            mDialog = new ProgressDialog(getActivity());
+            mDialog.setMessage("Loading...");
+            mDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            mDialog.setCanceledOnTouchOutside(false);
+            mDialog.setCancelable(false);
+            mDialog.show();
+        } else if (!mDialog.isShowing()) {
+            mDialog.show();
+        }
+
+    }
+    public void dismissProgress() {
+        if (mDialog != null && mDialog.isShowing()) {
+            mDialog.dismiss();
+        }
     }
 
-    public void setApprovedOrders(ArrayList<Order> approvedOrders) {
-        this.approvedOrders = approvedOrders;
-    }
 
-    public ArrayList<Order> approvedOrders = new ArrayList<>();
-
-    public ArrayList<Order> preparedOrders = new ArrayList<>();
-
-    public ArrayList<Order> getPreparedOrders() {
-        return preparedOrders;
-    }
-
-    public void setPreparedOrders(ArrayList<Order> preparedOrders) {
-        this.preparedOrders = preparedOrders;
-    }
 }

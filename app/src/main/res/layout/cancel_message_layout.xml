@@ -3,11 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:text="please drop a reason for cancelaion?"/>
     <EditText
         android:id="@+id/cancel_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:minHeight="100dp"
         android:padding="8dp" />
 </LinearLayout>

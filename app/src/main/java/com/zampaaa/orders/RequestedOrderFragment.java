@@ -55,9 +55,9 @@ public class RequestedOrderFragment extends BaseFragment {
         ArrayList<Order> orders = new ArrayList<>();
         for (int i = 1; i < 21; i++) {
             Order order = new Order();
-            order.setOrderId(i + "");
+            order.setOrderId("order#"+i);
             order.setOrderPlacedby("user" + i);
-            order.setMobileNumber(i + "-000000000");
+            order.setMobileNumber("9785461254");
             order.setStatus("requested");
             ArrayList<Item> items = new ArrayList<>();
             int amt = 0;
@@ -91,7 +91,7 @@ public class RequestedOrderFragment extends BaseFragment {
         for(int i=0;i<requestedOrders.size();i++){
             Order order= requestedOrders.get(i);
             if(id.equalsIgnoreCase(order.getOrderId())){
-                approvedOrders.add(order);
+                ((OrdersFragment)RequestedOrderFragment.this.getParentFragment()).approvedOrders.add(order);
                 requestedOrders.remove(order);
                 break;
             }

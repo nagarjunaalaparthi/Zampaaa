@@ -44,6 +44,7 @@ public class RestaurentFragment extends BaseFragment implements View.OnClickList
             view = inflater.inflate(R.layout.activity_restaurent, container, false);
             initViews(view);
             initListeners();
+            showProgress();
         } else {
 
         }
@@ -74,24 +75,25 @@ public class RestaurentFragment extends BaseFragment implements View.OnClickList
     }
 
     public void setDataToAdapter() {
-        final String path = "/merchants/" + SharedPreferenceUtils.readString(getActivity(),"currentUserId","")
-                +"/restaurant/itemDetails/";
+        final String path = "/merchants/" + SharedPreferenceUtils.readString(getActivity(), "currentUserId", "")
+                + "/restaurant/itemDetails/";
         final ItemsAdapter adapter = new ItemsAdapter(RestaurentFragment.this);
         recyclerView.setAdapter(adapter);
         //items = ((MainActivity) getActivity()).dbHelper.getItems();
         mDatabase.child(path).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.e("ItemsList",dataSnapshot.getChildren().iterator().next().getKey()+"");
-           //    for(int i =0 ;i<dataSnapshot.getChildrenCount();i++){
-                items.clear();
-                Iterator<DataSnapshot> iterator = dataSnapshot.getChildren().iterator();
-                while(iterator.hasNext()){
-                   DataSnapshot temp = iterator.next();
-                    String child = temp.getKey();
-                    items.add(dataSnapshot.child(child).getValue(Item.class));
-                }
-                adapter.setItems(items);
+
+                    //    for(int i =0 ;i<dataSnapshot.getChildrenCount();i++){
+                    items.clear();
+                dismissProgress();
+                    Iterator<DataSnapshot> iterator = dataSnapshot.getChildren().iterator();
+                    while (iterator.hasNext()) {
+                        DataSnapshot temp = iterator.next();
+                        String child = temp.getKey();
+                        items.add(dataSnapshot.child(child).getValue(Item.class));
+                    }
+                    adapter.setItems(items);
             }
 
             @Override

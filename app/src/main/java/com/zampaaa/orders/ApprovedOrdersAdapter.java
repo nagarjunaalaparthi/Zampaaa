@@ -47,8 +47,9 @@ public class ApprovedOrdersAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            approvedOrders.preparedOrders.add(order);
-                            approvedOrders.approvedOrders.remove(order);
+                            approvedOrders.deleteOrder(order);
+//                            approvedOrders.preparedOrders.add(order);
+//                            approvedOrders.approvedOrders.remove(order);
                             dialogInterface.dismiss();
                         }
                     });
