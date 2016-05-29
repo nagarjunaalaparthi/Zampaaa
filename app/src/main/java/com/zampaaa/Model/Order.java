@@ -1,56 +1,83 @@
 package com.zampaaa.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
+
 
 /**
- * Created by kiran on 29/5/16.
+ * Created by Softapt on 29/05/2016.
  */
-public class Order {
+public class Order implements Serializable {
+    ArrayList<Item> items = new ArrayList<>();
+    String status = "";
+    String orderId = "";
+    String totalAmt = "";
+    String comments = "";
+    String orderPlacedby = "";
+    private String mobileNumber = "";
+    String offer = "";
 
-    private String order_id = "";
-    private String order_date = "";
-    private String order_time = "";
-    private String order_by_user_id = "";
-    private List<Item> order_items = new ArrayList<>();
-
-    public String getOrder_id() {
-        return order_id;
+    public ArrayList<Item> getItems() {
+        return items;
     }
 
-    public void setOrder_id(String order_id) {
-        this.order_id = order_id;
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
     }
 
-    public String getOrder_date() {
-        return order_date;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setOrder_date(String order_date) {
-        this.order_date = order_date;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
-    public String getOrder_time() {
-        return order_time;
+    public String getTotalAmt() {
+        return totalAmt;
     }
 
-    public void setOrder_time(String order_time) {
-        this.order_time = order_time;
+    public void setTotalAmt(String totalAmt) {
+        this.totalAmt = totalAmt;
     }
 
-    public String getOrder_by_user_id() {
-        return order_by_user_id;
+    public String getComments() {
+        return comments;
     }
 
-    public void setOrder_by_user_id(String order_by_user_id) {
-        this.order_by_user_id = order_by_user_id;
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 
-    public List<Item> getOrder_items() {
-        return order_items;
+    public String getStatus() {
+        return status;
     }
 
-    public void setOrder_items(List<Item> order_items) {
-        this.order_items = order_items;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getOrderPlacedby() {
+        return orderPlacedby;
+    }
+
+    public void setOrderPlacedby(String orderPlacedby) {
+        this.orderPlacedby = orderPlacedby;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    public String getOffer() {
+        return offer;
+    }
+
+    public void setOffer(String offer) {
+        this.offer = offer;
     }
 }

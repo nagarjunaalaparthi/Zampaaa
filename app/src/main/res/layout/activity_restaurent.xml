@@ -15,7 +15,7 @@
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleTextAppearance="@style/HeaderTitleStyle"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="Zampaaa"
+            app:title="Hello Curry!!!"
             app:titleTextColor="@android:color/white">
 
             <RelativeLayout

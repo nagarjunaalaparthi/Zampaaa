@@ -83,6 +83,8 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
                 // reports
                 break;
             case 3:
+                ChatFragment chatFragment = new ChatFragment();
+                addFragmentToView(chatFragment);
                 // chat
                 break;
         }

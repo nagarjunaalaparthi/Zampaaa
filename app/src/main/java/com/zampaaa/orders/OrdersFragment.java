@@ -85,6 +85,7 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
         viewPager.setCurrentItem(tab.getPosition());
+
     }
 
     @Override
@@ -118,10 +119,10 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
                     RequestedOrderFragment tab1 = new RequestedOrderFragment();
                     return tab1;
                 case 1:
-                    RequestedOrderFragment tab2 = new RequestedOrderFragment();
+                    ApprovedOrders tab2 = new ApprovedOrders();
                     return tab2;
                 case 2:
-                    RequestedOrderFragment tab3 = new RequestedOrderFragment();
+                    PreparedOrders tab3 = new PreparedOrders();
                     return tab3;
                 default:
                     return null;

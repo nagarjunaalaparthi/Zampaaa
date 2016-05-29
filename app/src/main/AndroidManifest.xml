@@ -19,6 +19,7 @@
         <activity android:name=".orders.OrdersFragment" />
         <activity android:name=".Analytics.ReportsFragment" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".orders.OrderDetailsActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

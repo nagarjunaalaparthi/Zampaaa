@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zampaaa.BaseFragment;
-import com.zampaaa.Items.ItemsAdapter;
 import com.zampaaa.R;
 
 /**
@@ -21,25 +20,31 @@ public class RequestedOrderFragment extends BaseFragment {
     private View view;
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
+    private RequestedOrdersAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if(view == null) {
+        if (view == null) {
             view = inflater.inflate(R.layout.fragment_recyclerview, container, false);
             initViews(view);
-        }else{
+        } else {
 
         }
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
     private void initViews(View view) {
-            recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-            layoutManager = new LinearLayoutManager(getActivity());
-            recyclerView.setLayoutManager(layoutManager);
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
-            ItemsAdapter adapter = new ItemsAdapter(null);
-            recyclerView.setAdapter(adapter);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        adapter = new RequestedOrdersAdapter(RequestedOrderFragment.this, null);
+        recyclerView.setAdapter(adapter);
     }
 }
