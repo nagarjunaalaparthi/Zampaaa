@@ -1,17 +1,21 @@
 package com.zampaaa.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+
 
 /**
  * Created by Softapt on 29/05/2016.
  */
-public class Order {
+public class Order implements Serializable {
     ArrayList<Item> items = new ArrayList<>();
     String status = "";
     String orderId = "";
     String totalAmt = "";
     String comments = "";
     String orderPlacedby = "";
+    private String mobileNumber = "";
+    String offer = "";
 
     public ArrayList<Item> getItems() {
         return items;
@@ -59,5 +63,21 @@ public class Order {
 
     public void setOrderPlacedby(String orderPlacedby) {
         this.orderPlacedby = orderPlacedby;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    public String getOffer() {
+        return offer;
+    }
+
+    public void setOffer(String offer) {
+        this.offer = offer;
     }
 }

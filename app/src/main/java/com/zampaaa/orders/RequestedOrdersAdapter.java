@@ -1,5 +1,7 @@
 package com.zampaaa.orders;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,11 +34,20 @@ public class RequestedOrdersAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        OrderViewHolder OrderViewHolder = (OrderViewHolder) holder;
+        OrderViewHolder orderViewHolder = (OrderViewHolder) holder;
         if (ordersList != null) {
             Order order = ordersList.get(position);
-            OrderViewHolder.orderId.setText(order.getOrderId());
+            orderViewHolder.orderId.setText(order.getOrderId());
         }
+        orderViewHolder.orderId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requestedOrderFragment.getActivity(),OrderDetailsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("order",ordersList.get(position));
+                requestedOrderFragment.getActivity().startActivity(intent);
+            }
+        });
     }
 
     @Override

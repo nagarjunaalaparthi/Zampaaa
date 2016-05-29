@@ -9,13 +9,9 @@
         android:name=".ZampaaaApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RestaurentFragment">
-
-        </activity>
         <activity android:name=".Items.AddItemsToMenuActivity"></activity>
         <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".orders.OrdersFragment"></activity>
-        <activity android:name=".Analytics.ReportsFragment"></activity>
+        <activity android:name=".orders.OrderDetailsActivity"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>

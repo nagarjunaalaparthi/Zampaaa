@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zampaaa.Model.Item;
@@ -39,6 +40,12 @@ public class PreparedOrdersAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             OrderViewHolder.status.setVisibility(View.VISIBLE);
             OrderViewHolder.status.setText(order.getStatus());
         }
+        OrderViewHolder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Todo : QR Code
+            }
+        });
     }
 
     @Override
@@ -53,11 +60,13 @@ public class PreparedOrdersAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public class OrderViewHolder extends RecyclerView.ViewHolder {
         public TextView orderId;
         public TextView status;
+        public RelativeLayout layout;
 
         public OrderViewHolder(View view) {
             super(view);
             orderId = (TextView) view.findViewById(R.id.orderId);
             status = (TextView) view.findViewById(R.id.status);
+            layout = (RelativeLayout) view.findViewById(R.id.detailslayout);
         }
 
     }
